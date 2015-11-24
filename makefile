@@ -4,7 +4,7 @@ OBJDIR = obj/
 BINDIR = bin/
 
 #ADD SOURCE/HEADER FILE NAMES HERE
-NAME = main
+NAME = main eventQueue eventQueueNode
 SRC = $(addprefix $(SRCDIR), $(addsuffix .cpp, $(NAME)))
 OBJ = $(addprefix $(OBJDIR), $(addsuffix .o, $(NAME)))
 INC = $(addprefix $(INCDIR), $(addsuffix .hpp, $(NAME)))
@@ -14,13 +14,13 @@ EXE = $(BINDIR)leifLetLive
 CC = g++
 CVER = -std=c++11
 WARN = -Wall -W
-OPT = -g $(CVER) $(WARN) -I$(INCDIR)
-LIB =#-lncurses
+OPT = -g $(CVER) $(WARN) -I$(INCDIR) 
+LIB =-lncurses -lcurses
 
 all: $(EXE)
 
 $(EXE): $(OBJ) $(INC) | $(BINDIR)
-	$(CC) -o $@ $(LIB) $(OBJ)
+	$(CC) -o $@ $(OBJ) $(LIB)
 
 #while this is general, it is not accurate if the header file includes other header files. 
 #I would then have to replace this in favor of a more specific compilation.
