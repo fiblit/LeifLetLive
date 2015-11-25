@@ -13,9 +13,9 @@ EXE = $(BINDIR)leifLetLive
 
 CC = g++
 CVER = -std=c++11
-WARN = -Wall -W
+WARN = -Wall -W -Wno-unused-variable
 OPT = -g $(CVER) $(WARN) -I$(INCDIR) 
-LIB =-lncurses -lcurses
+LIB = -lncursesw
 
 all: $(EXE)
 

@@ -4,10 +4,15 @@
 #include <iostream>
 #include <cstdio>
 #include <cstdbool>
+#include <clocale>
 
-#include <curses.h>
+//#include <ncurses.h>
+//#include <curses.h>
+#include <ncursesw/curses.h>
 
 #include "eventQueue.hpp"
+#include "specialChars.hpp"
+#include "debug.hpp"
 
 bool gameShouldRun;
 

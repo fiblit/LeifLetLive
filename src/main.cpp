@@ -21,6 +21,8 @@ void init()
 	mainEventQueue = buildEventQueue();
 	gameShouldRun = true;
 
+	setlocale(LC_ALL, "");//setup unicode locale
+
 	initscr();
 	raw();
 	noecho();
@@ -37,7 +39,9 @@ void update()
 	if(mainEventQueue->hasEvents())
 	{
 		mainEventQueue->doNextEvent();
-		cout << "\ndebug 1\n";
+		#ifdef DEBUG
+		printf("\n\rdebug 1\n\r");
+		#endif
 		refresh();
 	}
 }
@@ -51,6 +55,7 @@ void endGame()
 void getCharInput()
 {
 	processCharInput( getch() );
+	mainEventQueue->addEvent(getCharInput, EVENT_PRIORITY_SOON);
 }
 
 void processCharInput( unsigned char nxtc )
@@ -58,13 +63,19 @@ void processCharInput( unsigned char nxtc )
 	if (nxtc == EOF || nxtc == 27)//27 is ESCAPE
 	{
 		gameShouldRun = false;
-		printw("\ndebug 3\n");
+		#ifdef DEBUG
+		printf("\n\rdebug 3\n\r");
+		#endif
 	}	
 	else
 	{
-		addch(nxtc);
+		printf("%c",nxtc);
 		mainEventQueue->addEvent(getCharInput, EVENT_PRIORITY_SOON);
-		printw("\ndebug 4\n");
+		const wchar_t* wstr = spuc::black_diamond;
+		addwstr(wstr);
+		#ifdef DEBUG
+		printf("\n\rdebug 4\n\r");
+		#endif
 	}
 }
 
