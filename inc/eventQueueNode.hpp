@@ -4,6 +4,8 @@
 #include <climits>
 #include <cassert>
 
+#include "debug.hpp"
+
 //an Event is just a pointer to a function which returns void and takes void
 typedef void (*Event)();
 

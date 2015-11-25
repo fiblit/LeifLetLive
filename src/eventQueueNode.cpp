@@ -33,7 +33,9 @@ EventQueueNode::~EventQueueNode()
 
 void EventQueueNode::sinkSwap()
 {
+	#ifdef DOASSERT
 	assert(this->next != nullptr);
+	#endif
 
 	EventQueueNode *tempNext = this->next;
 	this->next = this->next->getNext();
