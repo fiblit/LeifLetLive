@@ -1,5 +1,6 @@
 1. Replace MAKEFILE with CMake
   1.1. Update .gitignore accordingly
 2. Replace current README with appropriate story subdirectories
+  2.1. Rewrite current backstory for better flow.
 3. Add appropriate README for running/building/contributing etc.
 4. Add license that I feel is appropriate
